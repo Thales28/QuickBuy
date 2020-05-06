@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace QuickBuy.Dominio.Entities
+﻿namespace QuickBuy.Dominio.Entities
 {
-    class OrderItem
+    public class OrderItem : Entity
     {
         public int Id { get; set; }
         public int ProductId { get; set; }
         public int Quantity { get; set; }
 
+        public override void Validate()
+        {
+            if (Quantity == 0)
+                AddMessage("Erro - É necessário informar a quantidade");
+
+            if (ProductId == 0)
+                AddMessage("Erro - É necessário informar o produto");
+        }
     }
 }

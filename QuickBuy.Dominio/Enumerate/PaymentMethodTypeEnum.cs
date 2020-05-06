@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace QuickBuy.Dominio.Enumerate
+﻿namespace QuickBuy.Dominio.Enumerate
 {
     public enum PaymentMethodTypeEnum
     {

@@ -1,11 +1,8 @@
 ﻿using QuickBuy.Dominio.Enumerate;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace QuickBuy.Dominio.ValueObject
 {
-    class PaymentMethod
+    public class PaymentMethod
     {
         public int Id { get; set; }
         public string Name { get; set; }
