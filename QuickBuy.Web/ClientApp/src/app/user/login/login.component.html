@@ -1,0 +1,55 @@
+<body class="text-center">
+  <form class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label class="sr-only" for="inputEmail">Email address</label>
+    <input class="form-control"
+           id="inputEmail"
+           autofocus=""
+           required type="email"
+           placeholder="Email address"
+           (keypress)="onKeyPress()"
+           [(ngModel)]="user.email"
+           [ngModelOptions]="{standalone: true}"
+           #email="ngModel"
+           [ngClass]="{
+            'is-invalid':email.invalid && (email.dirty || email.touched),
+            'is-valid':email.valid && (email.dirty || email.touched)
+           }">
+    <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
+      Invalid email!
+    </div>
+
+
+    <label class="sr-only" for="inputPassword">Password</label>
+    <input class="form-control"
+           id="inputPassword"
+           required type="password"
+           placeholder="Password"
+           [(ngModel)]="user.password"
+           [ngModelOptions]="{standalone: true}"
+           #password="ngModel"
+           [ngClass]="{
+            'is-invalid':password.invalid && (password.dirty || password.touched),
+            'is-valid':password.valid && (password.dirty || password.touched)
+           }">
+    <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">
+      Invalid password!
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="signIn()">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">© 2020</p>
+
+    <div class="alert alert-primary" role="alert" *ngIf="userAuthentication">
+      User Authenticated!
+    </div>
+
+  </form>
+
+
+</body>
