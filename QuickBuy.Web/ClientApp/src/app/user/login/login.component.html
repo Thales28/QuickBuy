@@ -42,12 +42,20 @@
       </label>
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="signIn()">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">© 2020</p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="signIn() ">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="activeSpinner"></span>
+      Sign in
+    </button>
 
     <div class="alert alert-primary" role="alert" *ngIf="userAuthentication">
       User Authenticated!
     </div>
+
+    <div class="alert alert-danger" *ngIf="message">
+      {{message}}
+    </div>
+
+    <p class="mt-5 mb-3 text-muted">© 2020</p>
 
   </form>
 

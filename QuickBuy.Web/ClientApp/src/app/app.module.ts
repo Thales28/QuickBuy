@@ -7,18 +7,20 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+//import { CounterComponent } from './counter/counter.component';
+//import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './user/login/login.component'; 
+import { RouterGuard } from './authorization/router.guard';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
+  //CounterComponent,
+  //FetchDataComponent,
     ProductComponent,
     LoginComponent
   ],
@@ -28,13 +30,15 @@ import { LoginComponent } from './user/login/login.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      /*
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'product', component: ProductComponent },
+      */
+      { path: 'product', component: ProductComponent, canActivate: [RouterGuard] },
       { path: 'login', component: LoginComponent }
     ])
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
