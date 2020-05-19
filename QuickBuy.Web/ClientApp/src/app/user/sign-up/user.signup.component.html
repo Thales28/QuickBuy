@@ -1,6 +1,7 @@
 <body class="text-center">
   <form class="form-signin">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Create account</h1>
+
     <label class="sr-only" for="inputEmail">Email address</label>
     <input class="form-control"
            id="inputEmail"
@@ -19,7 +20,6 @@
       Invalid email!
     </div>
 
-
     <label class="sr-only" for="inputPassword">Password</label>
     <input class="form-control"
            id="inputPassword"
@@ -36,18 +36,46 @@
       Invalid password!
     </div>
 
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+    <label class="sr-only" for="inputName">Name</label>
+    <input class="form-control"
+           id="inputName"
+           required type="text"
+           placeholder="Name"
+           [(ngModel)]="user.name"
+           [ngModelOptions]="{standalone: true}"
+           #name="ngModel"
+           [ngClass]="{
+            'is-invalid':name.invalid && (name.dirty || name.touched),
+            'is-valid':name.valid && (name.dirty || name.touched)
+           }">
+    <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+      Invalid name!
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="signIn() ">
+    <label class="sr-only" for="inputSurname">Surname</label>
+    <input class="form-control"
+           id="inputSurname"
+           required type="text"
+           placeholder="Surname"
+           [(ngModel)]="user.surname"
+           [ngModelOptions]="{standalone: true}"
+           #surname="ngModel"
+           [ngClass]="{
+            'is-invalid':surname.invalid && (surname.dirty || surname.touched),
+            'is-valid':surname.valid && (surname.dirty || surname.touched)
+           }">
+    <div class="invalid-feedback" *ngIf="surname.invalid && (surname.dirty || surname.touched)">
+      Invalid surname!
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="signUp() ">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="activeSpinner"></span>
-      Sign in
+      Save
     </button>
 
-    <div>New here? <a [routerLink]='["/user-signup"]' >Sign up</a></div>
+    <button class="btn btn-lg btn-secondary btn-block" type="button" [routerLink]='["/login"]'>
+      Back
+    </button>
 
     <div class="alert alert-primary" role="alert" *ngIf="userAuthentication">
       User Authenticated!

@@ -13,6 +13,9 @@ import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './user/login/login.component'; 
 import { RouterGuard } from './authorization/router.guard';
 import { UserService } from './services/user.service';
+import { UserSignupComponent } from './user/sign-up/user.signup.component';
+import { ProductService } from './services/product.service';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { UserService } from './services/user.service';
   //CounterComponent,
   //FetchDataComponent,
     ProductComponent,
-    LoginComponent
+    LoginComponent,
+    UserSignupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,11 +38,12 @@ import { UserService } from './services/user.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       */
-      { path: 'product', component: ProductComponent, canActivate: [RouterGuard] },
-      { path: 'login', component: LoginComponent }
+      { path: 'product', component: ProductComponent /*, canActivate: [RouterGuard] */},
+      { path: 'login', component: LoginComponent },
+      { path: 'user-signup', component: UserSignupComponent }
     ])
   ],
-  providers: [UserService],
+  providers: [UserService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

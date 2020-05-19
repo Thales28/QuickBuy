@@ -6,10 +6,78 @@
 </head>
 <body>
   <div>
-  {{ getName() }}
+    {{ getName() }}
   </div>
   <div>
     <img class="imgSize" src="..\..\..\assets\img\shoppingIcon.png" title="Shopping icon" />
+  </div>
+  <h1 class="h4">Product Register</h1>
+
+  <label for="inputName" class="sr-only">Name</label>
+  <input type="text"
+         id="inputName"
+         name="inputName"
+         placeholder="Name"
+         [(ngModel)]="product.name"
+         #name="ngModel"
+         required
+         class="form-control mb-2 col-md-4"
+         [ngClass]="{
+            'is-invalid':name.invalid && (name.dirty || name.touched),
+            'is-valid':name.valid && (name.dirty || name.touched)
+           }" />
+  <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+    Invalid name!
+  </div>
+
+  <label for="inputDescription" class="sr-only">Description</label>
+  <input type="text"
+         id="inputDescription"
+         name="inputDescription"
+         placeholder="Description"
+         [(ngModel)]="product.description"
+         #description="ngModel"
+         required
+         class="form-control mb-2 col-md-4"
+         [ngClass]="{
+            'is-invalid':description.invalid && (description.dirty || description.touched),
+            'is-valid':description.valid && (description.dirty || description.touched)
+           }" />
+  <div class="invalid-feedback" *ngIf="description.invalid && (description.dirty || description.touched)">
+    Invalid description!
+  </div>
+
+  <label for="inputPrice" class="sr-only">Price</label>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text mb-2">$</span>
+    </div>
+    <input type="number"
+           id="inputPrice"
+           name="inputPrice"
+           placeholder="Price"
+           [(ngModel)]="product.price"
+           #price="ngModel"
+           required
+           class="form-control mb-2 col-md-2"
+           [ngClass]="{
+            'is-invalid':price.invalid && (price.dirty || price.touched),
+            'is-valid':price.valid && (price.dirty || price.touched)
+           }" />
+  </div>
+  <div class="invalid-feedback" *ngIf="price.invalid && (price.dirty || price.touched)">
+    Invalid price!
+  </div>
+
+  <div class="custom-file col-md-4">
+    <input type="image" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+    <label class="custom-file-label" for="inputGroupFile04">Choose image</label>
+  </div>
+  <div>
+    <button class="btn btn-lg btn-primary" type="submit" (click)="register()">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="activeSpinner"></span>
+      Save
+    </button>
   </div>
 </body>
 </html>

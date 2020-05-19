@@ -38,11 +38,26 @@ export class UserService {
   public UserVerify(user: User): Observable<User> {
 
     const headers = new HttpHeaders().set('content-type', 'application/json');
+
     var body = {
       email: user.email,
       password: user.password
     }
+
     return this.http.post<User>(this.baseUrl + "api/User/userverify", body, { headers });
+  }
+
+  public userSignUp(user: User): Observable<User> {
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    var body = {
+      email: user.email,
+      password: user.password,
+      name: user.name,
+      surName: user.surname
+    }
+
+    return this.http.post<User>(this.baseUrl + "api/user", body, { headers });
   }
 
 }

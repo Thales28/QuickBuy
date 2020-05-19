@@ -26,10 +26,13 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\authorization\router.guard.ts" />
+    <None Remove="ClientApp\src\app\model\product.ts" />
     <None Remove="ClientApp\src\app\model\user.ts" />
     <None Remove="ClientApp\src\app\product\product.component.ts" />
+    <None Remove="ClientApp\src\app\services\product.service.ts" />
     <None Remove="ClientApp\src\app\services\user.service.ts" />
     <None Remove="ClientApp\src\app\user\login\login.component.ts" />
+    <None Remove="ClientApp\src\app\user\sign-up\user.signup.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,20 +41,19 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\authorization\router.guard.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\product.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product\product.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\product.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\user.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\user\login\login.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\user\sign-up\user.signup.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Update="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\user\sign-up\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
